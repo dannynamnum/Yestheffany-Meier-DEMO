@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>A personal walkthrough — Yestheffany Meier</title>
+<meta name="description" content="A 60-second personal walkthrough of the demo built for Yestheffany Meier." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    /* Palette parity with index.html — Option D Coastal Linen */
+    --cream: #F5F0E8;
+    --warm-white: #FAF7F2;
+    --dark: #2C3038;
+    --dark-soft: #4A5260;
+    --accent: #7DBFBE;
+    --accent-dark: #4A9190;
+    --accent-light: #C2DEDD;
+    --sand: #DDD8CE;
+    --text-muted: #6B6560;
+
+    /* RGB triplets */
+    --accent-rgb: 125, 191, 190;
+    --dark-rgb: 44, 48, 56;
+    --warm-white-rgb: 250, 247, 242;
+    --hero-overlay-tint: 18, 22, 30;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    color: var(--dark-soft);
+    background: var(--warm-white);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    padding-bottom: 64px; /* matches sticky bar height */
+  }
+  a { color: inherit; }
+  img { max-width: 100%; display: block; }
+
+  /* ---------- LAYOUT ---------- */
+  .page {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 28px 20px 40px;
+    text-align: center;
+    min-height: calc(100vh - 64px);
+    display: flex; flex-direction: column;
+  }
+
+  .wordmark {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 22px;
+    color: var(--dark);
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    margin-bottom: 20px;
+    display: inline-block;
+    transition: color 0.2s ease;
+  }
+  .wordmark:hover { color: var(--accent-dark); }
+
+  .eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--accent-dark);
+    margin-bottom: 20px;
+  }
+
+  /* ---------- LOOM EMBED ---------- */
+  .video-wrap {
+    width: 100%;
+    max-width: 360px;
+    margin: 0 auto 36px;
+    background: var(--dark);
+    box-shadow: 0 30px 70px -40px rgba(var(--dark-rgb), 0.45);
+  }
+  .video-aspect {
+    position: relative;
+    /* Exact value from Loom embed snippet — DO NOT round */
+    padding-bottom: 217.4129353233831%;
+    height: 0;
+  }
+  .video-aspect iframe {
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: 100%;
+    border: 0;
+  }
+
+  /* ---------- BELOW-FOLD CTAS ---------- */
+  .below-fold { margin-top: auto; padding-top: 24px; }
+
+  .demo-btn {
+    display: inline-block;
+    background: var(--dark);
+    color: var(--warm-white);
+    text-decoration: none;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 16px 36px;
+    margin-bottom: 22px;
+    transition: background 0.25s ease, transform 0.25s ease;
+  }
+  .demo-btn:hover { background: var(--dark-soft); transform: translateY(-1px); }
+
+  .how-link {
+    display: block;
+    font-size: 12px;
+    color: var(--text-muted);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    margin-bottom: 28px;
+    transition: color 0.2s ease;
+  }
+  .how-link span {
+    border-bottom: 1px solid var(--sand);
+    padding-bottom: 2px;
+  }
+  .how-link:hover { color: var(--accent-dark); }
+  .how-link:hover span { border-bottom-color: var(--accent-dark); }
+
+  .attribution {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    opacity: 0.7;
+    margin-top: 8px;
+  }
+
+  /* ---------- STICKY CTA BAR — Danny's brand ---------- */
+  .sticky-bar {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    background: #F0EDE8;
+    border-top: 1px solid rgba(0,0,0,0.08);
+    height: 64px;
+    z-index: 200;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .sticky-bar-inner {
+    max-width: 480px; width: 100%;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 24px;
+    padding: 0 24px;
+  }
+  .sticky-bar-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: #3A3530;
+    white-space: nowrap;
+  }
+  .sticky-bar-btn {
+    background: #151821;
+    color: #F0EDE8;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    padding: 11px 24px;
+    text-decoration: none;
+    border-radius: 2px;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+    transition: background 0.25s ease, transform 0.25s ease;
+  }
+  .sticky-bar-btn:hover { background: #2C2A33; transform: translateY(-1px); }
+
+  /* ---------- MOBILE ---------- */
+  @media (max-width: 480px) {
+    body { padding-bottom: 60px; }
+    .page { padding: 24px 16px 32px; min-height: calc(100vh - 60px); }
+    .sticky-bar { height: 60px; }
+    .sticky-bar-inner { padding: 0 18px; gap: 18px; }
+    .video-wrap { max-width: 100%; }
+    .demo-btn { padding: 15px 28px; }
+  }
+</style>
+</head>
+<body>
+
+<main class="page">
+
+  <a class="wordmark" href="https://yestheffany-meier-demo.vercel.app/">Yestheffany Meier</a>
+
+  <div class="eyebrow">A personal walkthrough</div>
+
+  <div class="video-wrap">
+    <div class="video-aspect">
+      <iframe
+        src="https://www.loom.com/embed/38663a3947e34f48b30ab168f8a25a9e?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true&hideLogo=true"
+        title="A personal walkthrough — Yestheffany Meier"
+        allow="autoplay; fullscreen; picture-in-picture"
+        allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <div class="below-fold">
+    <a class="demo-btn" href="https://yestheffany-meier-demo.vercel.app/">View your demo →</a>
+
+    <a class="how-link" href="https://namnumdesign.co" target="_blank" rel="noopener">
+      <span>How this works</span>
+    </a>
+
+    <div class="attribution">Built by Namnum Design Co</div>
+  </div>
+
+</main>
+
+<div class="sticky-bar" role="complementary" aria-label="Schedule a call">
+  <div class="sticky-bar-inner">
+    <span class="sticky-bar-label">Like what you see?</span>
+    <a class="sticky-bar-btn" href="https://fantastical.app/Namnum/Intro-conversation" target="_blank" rel="noopener">Let's Talk →</a>
+  </div>
+</div>
+
+</body>
+</html>
